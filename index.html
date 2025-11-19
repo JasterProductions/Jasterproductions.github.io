@@ -284,6 +284,41 @@
       box-shadow: var(--shadow-medium);
     }
 
+        /* Slideshow styles */
+    .about-image {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .slideshow-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+
+    .slideshow-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+    }
+
+    .slideshow-image.active {
+        opacity: 1;
+    }
+
+    .about-image-text {
+        position: relative;
+        z-index: 1;
+    }
+
     .about-content h3 {
       font-size: 32px;
       font-weight: 700;
@@ -1003,7 +1038,14 @@
   <section id="about" class="section">
     <div class="about-grid">
       <div class="about-image fade-in">
+                        <!-- Slideshow Container -->
+                <div class="slideshow-container" id="photoSlideshow">
+                    <!-- Photos will be added here via JavaScript -->
+                </div>
+                <!-- Text overlay -->
+                <div class="about-image-text">
         Professional<br>Photography<br>Placeholder
+                                  </div>
       </div>
       <div class="about-content fade-in">
         <h3>Creating content that moves people and drives results</h3>
@@ -1435,6 +1477,59 @@
         }
       });
     });
+
+        // Photo Slideshow for About Section
+    function initPhotoSlideshow() {
+        const container = document.getElementById('photoSlideshow');
+        if (!container) return;
+
+        // Array of 20 photo paths (placeholder paths - user will replace with actual photos)
+        const photos = [
+            'photos/photo1.jpg',
+            'photos/photo2.jpg',
+            'photos/photo3.jpg',
+            'photos/photo4.jpg',
+            'photos/photo5.jpg',
+            'photos/photo6.jpg',
+            'photos/photo7.jpg',
+            'photos/photo8.jpg',
+            'photos/photo9.jpg',
+            'photos/photo10.jpg',
+            'photos/photo11.jpg',
+            'photos/photo12.jpg',
+            'photos/photo13.jpg',
+            'photos/photo14.jpg',
+            'photos/photo15.jpg',
+            'photos/photo16.jpg',
+            'photos/photo17.jpg',
+            'photos/photo18.jpg',
+            'photos/photo19.jpg',
+            'photos/photo20.jpg'
+        ];
+
+        // Create image elements
+        photos.forEach((photo, index) => {
+            const img = document.createElement('img');
+            img.src = photo;
+            img.alt = `Photo ${index + 1}`;
+            img.className = 'slideshow-image';
+            if (index === 0) img.classList.add('active');
+            container.appendChild(img);
+        });
+
+        let currentIndex = 0;
+        const images = container.querySelectorAll('.slideshow-image');
+
+        // Change photo every 4 seconds
+        setInterval(() => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }, 4000);
+    }
+
+    // Initialize slideshow
+    initPhotoSlideshow();
   </script>
 </body>
 </html>
