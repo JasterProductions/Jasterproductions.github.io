@@ -692,6 +692,48 @@
       border-color: var(--accent-gold);
     }
 
+        /* New Contact Section Styles */
+        .contact-info-protected {
+                  flex: 1;
+                  padding: 32px;
+                  background: var(--bg-white);
+                  border-radius: 24px;
+                  box-shadow: var(--shadow-subtle);
+              }
+
+        .reveal-button {
+                  background: var(--accent-gold);
+                  color: var(--bg-white);
+                  border: none;
+                  padding: 12px 32px;
+                  border-radius: 8px;
+                  font-size: 16px;
+                  font-weight: 600;
+                  cursor: pointer;
+                  transition: all 0.3s ease;
+                  margin-top: 24px;
+              }
+
+        .reveal-button:hover {
+                  background: rgba(212, 175, 55, 0.9);
+                  transform: translateY(-2px);
+                  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+              }
+
+        .contact-details-hidden {
+                  margin-top: 24px;
+                  padding-top: 24px;
+                  border-top: 1px solid var(--border-light);
+              }
+
+        .contact-form-wrapper {
+                  flex: 1;
+                  padding: 32px;
+                  background: var(--bg-white);
+                  border-radius: 24px;
+                  box-shadow: var(--shadow-subtle);
+              }
+
     /* Form Styles */
     .form-group {
       margin-bottom: 24px;
@@ -1184,56 +1226,64 @@
       <p class="section-description">Ready to bring your vision to life? Let's discuss how we can create something extraordinary together</p>
     </div>
 
-    <div class="contact-wrapper fade-in">
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h3>Get in Touch</h3>
-          <p>I'm always excited to discuss new projects and creative opportunities. Whether you have a specific vision or need guidance, I'm here to help.</p>
-          
-          <div class="contact-details">
-            <div class="contact-item">
-              <div class="contact-icon">✉️</div>
-              <div class="contact-text">
-                <div class="contact-label">Email</div>
-                <div class="contact-value">hello@yourname.com</div>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon">📞</div>
-              <div class="contact-text">
-                <div class="contact-label">Phone</div>
-                <div class="contact-value">+1 (555) 123-4567</div>
-              </div>
-            </div>
-          </div>
 
-          <div class="social-links">
-            <a href="#" target="_blank" class="social-link" title="Instagram">📷</a>
-            <a href="#" target="_blank" class="social-link" title="YouTube">▶️</a>
-            <a href="#" target="_blank" class="social-link" title="TikTok">🎵</a>
-            <a href="#" target="_blank" class="social-link" title="LinkedIn">💼</a>
-          </div>
+        <div class="contact-wrapper fade-in">
+            <div class="contact-grid">
+                <!-- Left Column: Captcha-Protected Contact Info -->
+                <div class="contact-info-protected">
+                    <h3>Contact Information</h3>
+                    <p>Click the button below to reveal my contact details</p>
+                    
+                    <button type="button" class="reveal-button" id="revealContactBtn" onclick="revealContactInfo()">
+                        <span>🔒 Reveal Contact Info</span>
+                    </button>
+                    
+                    <div class="contact-details-hidden" id="contactDetailsHidden" style="display: none;">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-text">
+                                <div class="contact-label">Email</div>
+                                <div class="contact-value">Jasterproductions@gmail.com</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-text">
+                                <div class="contact-label">Phone</div>
+                                <div class="contact-value">+1 (555) 123-4567</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Contact Form -->
+                <div class="contact-form-wrapper">
+                    <h3>Send Me a Message</h3>
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Name *</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email *</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="message">Message *</label>
+                            <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">Send Message</button>
+                        <div id="formMessage" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
         </div>
 
-        <form class="contact-form" id="contactForm">
-          <div class="form-group">
-            <label class="form-label" for="name">Name *</label>
-            <input type="text" id="name" class="form-input" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="email">Email *</label>
-            <input type="email" id="email" class="form-input" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="message">Message *</label>
-            <textarea id="message" class="form-textarea" required></textarea>
-          </div>
-          <button type="submit" class="form-submit">Send Message</button>
-          <div id="formMessage" class="form-message"></div>
-        </form>
-      </div>
-    </div>
-  </section>
+    </section>
 
   <!-- Footer -->
   <footer class="footer">
@@ -1555,6 +1605,20 @@
             images[currentIndex].classList.add('active');
         }, 4000);
     }
+
+        // Contact reveal function
+        function revealContactInfo() {
+                  const contactDetails = document.getElementById('contactDetailsHidden');
+                  const revealButton = event.target;
+
+                  if (contactDetails.style.display === 'none' || contactDetails.style.display === '') {
+                                contactDetails.style.display = 'block';
+                                revealButton.textContent = 'Hide Contact Details';
+                            } else {
+                                contactDetails.style.display = 'none';
+                                revealButton.textContent = 'Reveal Contact Details';
+                            }
+              }
 
     // Initialize slideshow
     initPhotoSlideshow();
