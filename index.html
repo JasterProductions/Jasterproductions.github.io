@@ -720,7 +720,20 @@
                   box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
               }
 
+
+        .contact-item-split {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  height: 50%;
+                  padding: 24px 0;
+                  text-align: center;
+              }
         .contact-details-hidden {
+                  display: flex;
+                  flex-direction: column;
+                  height: 200px;
                   margin-top: 24px;
                   padding-top: 24px;
                   border-top: 1px solid var(--border-light);
@@ -1239,23 +1252,17 @@
                     </button>
                     
                     <div class="contact-details-hidden" id="contactDetailsHidden" style="display: none;">
-                        <div class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <div class="contact-text">
-                                <div class="contact-label">Email</div>
-                                <div class="contact-value">Jasterproductions@gmail.com</div>
-                            </div>
+                        <div class="contact-item-split">
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">Jasterproductions@gmail.com</div>
                         </div>
                         
-                        <div class="contact-item">
-                            <div class="contact-icon">📱</div>
-                            <div class="contact-text">
-                                <div class="contact-label">Phone</div>
-                                <div class="contact-value">+1 (555) 123-4567</div>
-                            </div>
+                        <div class="contact-item-split">
+                            <div class="contact-label">Phone</div>
+                            <div class="contact-value">+1 (555) 123-4567</div>
                         </div>
                     </div>
-                </div>
+                </div>v>
                 
                 <!-- Right Column: Contact Form -->
                 <div class="contact-form-wrapper">
