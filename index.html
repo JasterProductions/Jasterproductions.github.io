@@ -1335,6 +1335,85 @@
     </div>
   </section>
 
+
+      <!-- Interactive Video Section -->
+    <section id="video-showcase" class="section">
+        <div class="video-container">
+            <video id="hoverVideo" width="1920" height="1080" muted loop>
+                <source src="your-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <style>
+        #video-showcase {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            background: var(--bg-cream);
+        }
+
+        .video-container {
+            position: relative;
+            max-width: 1920px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+    <script>
+        (function() {
+            const video = document.getElementById('hoverVideo');
+            let fadeOutInterval;
+            let currentVolume = 1;
+            const fadeSpeed = 0.05; // How fast to fade (higher = faster)
+            const fadeInterval = 50; // Milliseconds between fade steps
+
+            // Function to fade out audio
+            function fadeOutAudio() {
+                fadeOutInterval = setInterval(() => {
+                    if (currentVolume > 0) {
+                        currentVolume = Math.max(0, currentVolume - fadeSpeed);
+                        video.volume = currentVolume;
+                    } else {
+                        clearInterval(fadeOutInterval);
+                        video.pause();
+                    }
+                }, fadeInterval);
+            }
+
+            // Function to stop fade and reset
+            function stopFade() {
+                if (fadeOutInterval) {
+                    clearInterval(fadeOutInterval);
+                }
+                currentVolume = 1;
+                video.volume = currentVolume;
+            }
+
+            // Mouse enter - play video with sound
+            video.addEventListener('mouseenter', function() {
+                stopFade();
+                video.muted = false;
+                video.play();
+            });
+
+            // Mouse leave - fade out audio and pause
+            video.addEventListener('mouseleave', function() {
+                fadeOutAudio();
+            });
+        })();
+    </script>
   <!-- Contact Section -->
   <section id="contact" class="section">
     <div class="section-header fade-in">
