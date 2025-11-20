@@ -567,8 +567,7 @@
       box-shadow: var(--shadow-subtle);
     }
 
-    .1260
-    {
+    .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 64px;
@@ -1291,9 +1290,10 @@
     
     <div class="portfolio-filters fade-in">
       <button class="filter-btn active" data-filter="all">All Projects</button>
-      <button class="filter-btn" data-filter="Commercial">Commercial</button>
+      <button class="filter-btn" data-filter="Documentary">Documentary</button>
+      <button class="filter-btn" data-filter="Education">Education</button>
+      <button class="filter-btn" data-filter="Live Productions">Live Productions</button>
       <button class="filter-btn" data-filter="Social Media">Social Media</button>
-      <button class="filter-btn" data-filter="Branding">Branding</button>
     </div>
 
     <div class="portfolio-grid" id="portfolioGrid">
@@ -1518,7 +1518,7 @@
     const portfolioData = [
       {
         title: 'Rogues Broadcast',
-        category: 'Live Production',
+        category: 'Live Productions',
         description: 'Known as the "Go-To Guy" during time at CNA',
         fullDescription: 'Comprehensive commercial campaign showcasing innovative tech solutions through cinematic storytelling. Achieved 3M+ impressions and 42% increase in brand awareness. Shot on location across multiple cities with a full production crew.'
       },
@@ -1542,7 +1542,7 @@
       },
       {
         title: 'Pro Wrestling',
-        category: 'Live Production',
+        category: 'Live Productions',
         description: '5-minute brand story and company narrative',
         fullDescription: 'Intimate documentary-style brand film capturing the company\'s origin story and mission. Featured employee interviews, behind-the-scenes footage, and cinematic b-roll. Used across website, investor presentations, and recruitment efforts.'
       },
