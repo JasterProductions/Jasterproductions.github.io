@@ -1402,11 +1402,35 @@
             }
 
             // Mouse enter - play video with sound
-            video.addEventListener('mouseenter', function() {
-                stopFade();
-                video.muted = false;
-                video.play();
+            video.addEventListener('mouseenter', async function() {
+        stopFade();
+        video.muted = false;
+        
+        // Ensure video is loaded and ready
+        if (video.readyState < 3) {
+            // Video not loaded yet, wait for it
+            await new Promise((resolve) => {
+                video.addEventListener('loadeddata', resolve, { once: true });
+                // Force load if not already loading
+                video.load();
             });
+        }
+        
+        // Now play with error handling
+        try {
+            await video.play();
+        } catch (error) {
+            // If play fails, try again after a brief moment
+            console.log('Retrying video play...');
+            setTimeout(async () => {
+                try {
+                    await video.play();
+                } catch (e) {
+                    console.error('Video play failed:', e);
+                }
+            }, 100);
+        }
+    });
 
             // Mouse leave - fade out audio and pause
             video.addEventListener('mouseleave', function() {
