@@ -1518,9 +1518,9 @@
     // Portfolio data
     const portfolioData = [
       {
-title: 'Rogues Broadcast',
-            category: 'Live Productions',
-                    escription: 'Known as the "Go-To Guy" during time at CNA',
+        title: 'Rogues Broadcast',
+        category: 'Live Productions',
+        description: 'Known as the "Go-To Guy" during time at CNA',
         fullDescription: 'Comprehensive commercial campaign showcasing innovative tech solutions through cinematic storytelling. Achieved 3M+ impressions and 42% increase in brand awareness. Shot on location across multiple cities with a full production crew.'
       },
       {
@@ -1598,7 +1598,6 @@ title: 'Rogues Broadcast',
     const modal = document.getElementById('portfolioModal');
     const modalClose = document.getElementById('modalClose');
     const modalDetails = document.getElementById('modalDetails');
-        const modalVideo = document.querySelector('.modal-video');
 
     function openModal(item) {
       modalDetails.innerHTML = `
@@ -1606,15 +1605,6 @@ title: 'Rogues Broadcast',
         <h2>${item.title}</h2>
         <p>${item.fullDescription}</p>
       `;
-
-          // Populate video player
-    const videoUrl = item.video || 'showcase-video.mp4';
-    modalVideo.innerHTML = `
-        <video controls autoplay>
-            <source src="${videoUrl}" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    `;
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
