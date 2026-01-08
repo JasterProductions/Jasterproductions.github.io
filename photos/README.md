@@ -18,4 +18,4 @@ Upload 8 photos to this folder with the following names:
 - The slideshow will automatically cycle through these photos every 4 seconds
 - Each photo transitions with a smooth 1.5-second fade effect
 - Photos should be optimized for web (recommended size: 1200x1600px or similar 3:4 aspect ratio)
-- The slideshow appears behind the "Professional Photography Placeholder" text in the About section
+- The slideshow appears behind the "Professional Photography Placeholder" text in the About section, once the photos are uploaded the "Professional Photography Placeholder" text goes away
