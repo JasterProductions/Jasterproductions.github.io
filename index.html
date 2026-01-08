@@ -306,10 +306,10 @@
     }
 
     .slideshow-container {
-        position: relative;        top: 0;
+        position: absolute;
+        top: 0;
         left: 0;
         width: 100%;
-        position: relative;
         height: 100%;
         z-index: 0;
     }
@@ -330,7 +330,6 @@
     }
 
     .about-image-text {
-          display: none;
         position: relative;
         z-index: 1;
     }
@@ -1090,21 +1089,6 @@
         height: 300px;
       }
 
-      .slideshow-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-      }
-
-      .slideshow-image.active {
-        opacity: 1;
-      }
-
       .slideshow-placeholder {
         font-size: 1rem;
       }
@@ -1766,18 +1750,17 @@
         if (!container) return;
 
         // Array of 8 photo paths (placeholder paths - user will replace with actual photos)        const photos = [
-            'photos/photo1.jpg',
+            'photos/Photo1.jpg',
             'photos/photo2.jpg',
             'photos/photo3.jpg',
-            'photos/photo4.jpg',
-            'photos/photo5.jpg',
-            'photos/photo6.jpg',
-            'photos/photo7.jpg',
-        'photos/photo8.jpg',           
-    ];
+            'photos/Photo4.jpg',
+            'photos/Photo5.JPG',
+            'photos/photo6.JPG',
+            'photos/photo7.JPG',
+            'photos/photo8.JPG,'
+            
 
         // Create image elements
-                      container.innerHTML = ''; // Clear placeholder
         photos.forEach((photo, index) => {
             const img = document.createElement('img');
             img.src = photo;
