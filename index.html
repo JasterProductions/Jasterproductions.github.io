@@ -1251,6 +1251,8 @@
   <section id="about" class="section">
     <div class="about-grid">
       <div class="about-image fade-in">
+                    <!-- NEW WORKING SLIDESHOW -->
+            <div id="newPhotoSlideshow" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;"></div>
                         <!-- Slideshow Container -->
                 <div class="slideshow-container" id="photoSlideshow">
                     <!-- Photos will be added here via JavaScript -->
@@ -1797,6 +1799,40 @@
               }
 
     // Initialize slideshow
+        // NEW WORKING SLIDESHOW
+    (function() {
+        const container = document.getElementById('newPhotoSlideshow');
+        if (!container) return;
+        
+        const photos = [
+            'photos/photo1.jpg',
+            'photos/photo2.jpg',
+            'photos/photo3.jpg',
+            'photos/photo4.jpg',
+            'photos/photo5.jpg',
+            'photos/photo6.jpg',
+            'photos/photo7.jpg',
+            'photos/photo8.jpg'
+        ];
+        
+        let currentIndex = 0;
+        
+        photos.forEach((photo, index) => {
+            const img = document.createElement('img');
+            img.src = photo;
+            img.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;';
+            if (index === 0) img.style.opacity = '1';
+            container.appendChild(img);
+        });
+        
+        const images = container.querySelectorAll('img');
+        
+        setInterval(() => {
+            images[currentIndex].style.opacity = '0';
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].style.opacity = '1';
+        }, 4000);
+    })();
     initPhotoSlideshow();
   </script>
 </body>
