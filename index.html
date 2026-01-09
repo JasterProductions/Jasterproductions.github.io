@@ -1523,7 +1523,6 @@
         description: 'Critically Acclaimed Solo Production 70+ Live Professional Basketball Games while doing play-by-play commentary at the same time',
         fullDescription: '10+ Years of Live Sports Event Production experience with Memorial University Seahawks, St Johns Edge, and Newfoundland Rogues producing award-winning solo live production at a professional level',
         video: 'showcase-video.mp4'
-                    thumbnail: 'thumbnails/thumbnail1.jpg',
       },
       {
         title: 'Newfoundland Rogues EXPOSED',
@@ -1531,7 +1530,6 @@
         description: 'Full Length Documentary Shot, Produced, and Edited by Jaster Productions',
         fullDescription: 'Critically acclaimed documentary showcasing a surreal behind the scenes look at the Newfoundland Rogues 2024 Season',
         video: 'showcase-video.mp4'
-                    thumbnail: 'thumbnails/thumbnail2.jpg',
       },
       {
         title: 'CNA Showreel',
@@ -1539,7 +1537,6 @@
         description: 'Known as the "Go-To Guy" by instructors and a key member of student productions during time at CNA',
         fullDescription: 'A showcase of all my work during the final year of my time at CNA',
         video: 'cna-showreel.mp4'
-                    thumbnail: 'thumbnails/thumbnail3.jpg',
       },
       {
         title: 'Falling Down Sucks',
@@ -1547,7 +1544,6 @@
         description: 'Most Succesful Google Ads Campaign in Rogues History',
         fullDescription: 'The most successful if dozens of Rogues online marketing campaigns put together by Jaster Productions',
         video: 'falling-down-sucks.mp4'
-                    thumbnail: 'thumbnails/thumbnail4.jpg',
       },
       {
         title: 'Pro Wrestling',
@@ -1555,12 +1551,10 @@
         description: 'Shooting and Editing for sold out Newfoundland Wrestling events',
         fullDescription: 'Produce, Shoot, and Edit shows for NEW and ACW with an unrivaled passion for all things Pro Wrestling',
         video: 'showcase-video.mp4'
-                    thumbnail: 'thumbnails/thumbnail5.jpg',
       },
       {
         title: 'Benjamins Ad',
         category: 'Social Media',
-            thumbnail: 'thumbnails/thumbnail6.jpg',
         description: 'Creative Ad to Promote Benjamins x Rogues Collab',
         fullDescription: 'Key part of online and in-house advertising campaign for local suit partner',
         video: 'showcase-video.mp4'
@@ -1582,7 +1576,9 @@
             <div class="portfolio-info">
               <span class="portfolio-category">${item.category}</span>
               <h3 class="portfolio-title">${item.title}</h3>
-                <div class="portfolio-thumbnail"></div>          `;
+              <p class="portfolio-description">${item.description}</p>
+            </div>
+          `;
           card.addEventListener('click', () => openModal(item));
           grid.appendChild(card);
         });
