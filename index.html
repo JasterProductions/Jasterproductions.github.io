@@ -1582,8 +1582,7 @@
             <div class="portfolio-info">
               <span class="portfolio-category">${item.category}</span>
               <h3 class="portfolio-title">${item.title}</h3>
-                <div class="portfolio-thumbnail"><img src="${item.thumbnail}" alt="${item.title}" style="width: 100%; height: 100%; object-fit: cover;"></div>            </div>
-          `;
+                <div class="portfolio-thumbnail"></div>          `;
           card.addEventListener('click', () => openModal(item));
           grid.appendChild(card);
         });
