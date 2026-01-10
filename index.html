@@ -445,6 +445,13 @@
       overflow: hidden;
     }
 
+  .portfolio-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
     .portfolio-thumbnail::before {
       content: '▶';
       position: absolute;
@@ -1522,42 +1529,48 @@
         category: 'Live Productions',
         description: 'Critically Acclaimed Solo Production 70+ Live Professional Basketball Games while doing play-by-play commentary at the same time',
         fullDescription: '10+ Years of Live Sports Event Production experience with Memorial University Seahawks, St Johns Edge, and Newfoundland Rogues producing award-winning solo live production at a professional level',
-        video: 'showcase-video.mp4'
+        video: 'showcase-video.mp4',
+      thumbnail: 'thumbnails/thumb1.jpg'
       },
       {
         title: 'Newfoundland Rogues EXPOSED',
         category: 'Documentary',
         description: 'Full Length Documentary Shot, Produced, and Edited by Jaster Productions',
         fullDescription: 'Critically acclaimed documentary showcasing a surreal behind the scenes look at the Newfoundland Rogues 2024 Season',
-        video: 'showcase-video.mp4'
+        video: 'showcase-video.mp4',
+      thumbnail: 'thumbnails/thumb2.jpg'
       },
       {
         title: 'CNA Showreel',
         category: 'Education',
         description: 'Known as the "Go-To Guy" by instructors and a key member of student productions during time at CNA',
         fullDescription: 'A showcase of all my work during the final year of my time at CNA',
-        video: 'cna-showreel.mp4'
+        video: 'cna-showreel.mp4',
+      thumbnail: 'thumbnails/thumb3.jpg'
       },
       {
         title: 'Falling Down Sucks',
         category: 'Social Media',
         description: 'Most Succesful Google Ads Campaign in Rogues History',
         fullDescription: 'The most successful if dozens of Rogues online marketing campaigns put together by Jaster Productions',
-        video: 'falling-down-sucks.mp4'
+        video: 'falling-down-sucks.mp4',
+      thumbnail: 'thumbnails/thumb4.jpg'
       },
       {
         title: 'Pro Wrestling',
         category: 'Live Productions',
         description: 'Shooting and Editing for sold out Newfoundland Wrestling events',
         fullDescription: 'Produce, Shoot, and Edit shows for NEW and ACW with an unrivaled passion for all things Pro Wrestling',
-        video: 'showcase-video.mp4'
+        video: 'showcase-video.mp4',
+      thumbnail: 'thumbnails/thumb5.jpg'
       },
       {
         title: 'Benjamins Ad',
         category: 'Social Media',
         description: 'Creative Ad to Promote Benjamins x Rogues Collab',
         fullDescription: 'Key part of online and in-house advertising campaign for local suit partner',
-        video: 'showcase-video.mp4'
+        video: 'showcase-video.mp4',
+      thumbnail: 'thumbnails/thumb6.jpg'
       }
     ];
 
@@ -1572,8 +1585,9 @@
           const card = document.createElement('div');
           card.className = 'portfolio-card fade-in';
           card.innerHTML = `
-            <div class="portfolio-thumbnail"></div>
-            <div class="portfolio-info">
+              <div class="portfolio-thumbnail">
+                <img src="${item.thumbnail}" alt="${item.title}" />
+              </div>            <div class="portfolio-info">
               <span class="portfolio-category">${item.category}</span>
               <h3 class="portfolio-title">${item.title}</h3>
               <p class="portfolio-description">${item.description}</p>
