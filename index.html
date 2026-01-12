@@ -1382,6 +1382,9 @@
     <script>
         (function() {
             const video = document.getElementById('hoverVideo');
+                
+      // Start preloading the video immediately on page load
+      video.load();
             let fadeOutInterval;
             let currentVolume = 1;
             const fadeSpeed = 0.05; // How fast to fade (higher = faster)
@@ -1413,16 +1416,6 @@
             video.addEventListener('mouseenter', async function() {
         stopFade();
         video.muted = false;
-        
-        // Ensure video is loaded and ready
-        if (video.readyState < 3) {
-            // Video not loaded yet, wait for it
-            await new Promise((resolve) => {
-                video.addEventListener('loadeddata', resolve, { once: true });
-                // Force load if not already loading
-                video.load();
-            });
-        }
         
         // Now play with error handling
         try {
