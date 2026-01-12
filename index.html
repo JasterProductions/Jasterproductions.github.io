@@ -1415,24 +1415,15 @@
             }
 
             // Mouse enter - play video with sound
-            video.addEventListener('mouseenter', async function() {
+            video.addEventListener('mouseenter',  function() {
         stopFade();
         video.muted = false;
         
-        // Now play with error handling
-        try {
-            await video.play();
-        } catch (error) {
-            // If play fails, try again after a brief moment
-            console.log('Retrying video play...');
-            setTimeout(async () => {
-                try {
-                    await video.play();
-                } catch (e) {
-                    console.error('Video play failed:', e);
-                }
-            }, 100);
-        }
+    
+    // Play immediately, don't wait for full load
+    video.play().catch(() => {
+      // Silently handle any errors
+    });        }
     });
 
             // Mouse leave - fade out audio and pause
