@@ -1246,9 +1246,9 @@
     </video>
     <div class="hero-video-overlay"></div>
     <div class="hero-content fade-in">
-      <span class="hero-label"></span>
+      <span class="hero-label">welcome to</span>
       <h1>JASTER PRODUCTIONS</h1>
-      <p></p>
+      <p>Your next project starts here</p>
       <a href="#portfolio" class="hero-cta">
         <span>Explore My Work</span>
         <span>→</span>
@@ -1298,7 +1298,7 @@
     <div class="section-header fade-in">
       <div class="section-label">Portfolio</div>
       <h2 class="section-title">Featured Work</h2>
-      <p class="section-description">A curated selection of recent projects</p>
+      <p class="section-description">Some of my favourite recent projects</p>
     </div>
     
     <div class="portfolio-filters fade-in">
@@ -1316,8 +1316,8 @@
 
         <!-- My Journey Section -->  <section class="section" style="background: var(--bg-white);">
     <div class="section-header fade-in">
-      <div class="section-label">Who is Nic Conway?y</div>
-            <h2 class="section-title">My Journey</h2>      <p class="section-description">Learn all about the founding of Jaster Productions</p>
+      <div class="section-label">Who is Nic Conway?</div>
+            <h2 class="section-title">My Journey</h2>      <p class="section-description">The Founding of Jaster Productions</p>
     </div>
 
     <div class="process-grid">
@@ -1325,7 +1325,7 @@
                 <div class="journey-image"><img src="photos/childhood.jpg" alt="Childhood" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"></div>                <div class="process-content">
         <div class="process-number">01</div>
         <h3 class="process-title">Childhood</h3>
-        <p class="process-description">Uploading my first online web series at just 9 years old; I was born looking at a screen and pride myself on the extensive knowledge of online culture I collected through my lived online experience. Signing with my first MCN at 11, raking in millions of views and thousands in ad revenue for big channels by the time I hit 15. I truly feel this is what I was born to do. Whenever I wasn't online as a kid, I'd either be playing all kinds of sports or winning multiple local acting/production awards for live events at the prestigous LSPU Hall</p>
+        <p class="process-description">Uploading my first online web series at just 9 years old; I was born looking at a screen and pride myself on the extensive knowledge of online culture I collected through my lived online experience. Signing with my first MCN at 11, raking in millions of views and thousands in ad revenue for big channels by the time I hit 15. I truly feel this is what I was born to do. Whenever I wasn't online as a kid, I'd either be playing all kinds of sports or winning multiple local acting/production awards for live events.</p>
                 </div>
       </div>
       <div class="process-item fade-in">
@@ -1380,57 +1380,7 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
     </style>
-
-    <script>
-        (function() {
-            const video = document.getElementById('hoverVideo');
-                
-      // Start preloading the video immediately on page load
-      video.load();
-            let fadeOutInterval;
-            let currentVolume = 1;
-            const fadeSpeed = 0.05; // How fast to fade (higher = faster)
-            const fadeInterval = 50; // Milliseconds between fade steps
-
-            // Function to fade out audio
-            function fadeOutAudio() {
-                fadeOutInterval = setInterval(() => {
-                    if (currentVolume > 0) {
-                        currentVolume = Math.max(0, currentVolume - fadeSpeed);
-                        video.volume = currentVolume;
-                    } else {
-                        clearInterval(fadeOutInterval);
-                        video.pause();
-                    }
-                }, fadeInterval);
-            }
-
-            // Function to stop fade and reset
-            function stopFade() {
-                if (fadeOutInterval) {
-                    clearInterval(fadeOutInterval);
-                }
-                currentVolume = 1;
-                video.volume = currentVolume;
-            }
-
-            // Mouse enter - play video with sound
-            video.addEventListener('mouseenter',  function() {
-        stopFade();
-        video.muted = false;
-        
-    
-    // Play immediately, don't wait for full load
-    video.play().catch(() => {
-      // Silently handle any errors
-    });        }
-    });
-
-            // Mouse leave - fade out audio and pause
-            video.addEventListener('mouseleave', function() {
-                fadeOutAudio();
-            });
-        })();
+ 
     </script>
   <!-- Contact Section -->
   <section id="contact" class="section">
@@ -1495,8 +1445,8 @@
 
     <!-- Massive Text Section -->
     <section class="massive-text-section">
-        <h1 class="massive-text">HIRECONWAY.COM</h1>
-          <p class="copyright-text">© 2025 HIRECONWAY.COM. All Rights Reserved.</p>
+        <h1 class="massive-text">JASTERPRODUCTIONS.COM</h1>
+          <p class="copyright-text">© 2025 JASTERPRODUCTIONS.COM. All Rights Reserved.</p>
     </section>
   <!-- Portfolio Modal -->
   <div id="portfolioModal" class="modal">
