@@ -1639,42 +1639,65 @@
     });
 
     // Form handling
-    const contactForm = document.getElementById('contactForm');
-    const formMessage = document.getElementById('formMessage');
+const contactForm = document.getElementById('contactForm');
+const formMessage = document.getElementById('formMessage');
 
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // We keep this to stop the page from refreshing
 
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
 
-      if (!name || !email || !message) {
+    // Basic Validation
+    if (!name || !email || !message) {
         formMessage.textContent = 'Please fill in all required fields.';
         formMessage.className = 'form-message error';
         formMessage.style.display = 'block';
         return;
-      }
+    }
 
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
         formMessage.textContent = 'Please enter a valid email address.';
         formMessage.className = 'form-message error';
         formMessage.style.display = 'block';
         return;
-      }
+    }
 
-      formMessage.textContent = 'Thank you for reaching out! I\'ll get back to you within 24 hours.';
-      formMessage.className = 'form-message success';
-      formMessage.style.display = 'block';
+    // Send the data to Formspree in the background
+    try {
+        const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
 
-      contactForm.reset();
+        if (response.ok) {
+            // Success! Show your custom message
+            formMessage.textContent = 'Thank you for reaching out! I\'ll get back to you within 24 hours.';
+            formMessage.className = 'form-message success';
+            formMessage.style.display = 'block';
+            contactForm.reset();
+        } else {
+            // Formspree returned an error (e.g., spam block)
+            formMessage.textContent = 'Oops! There was a problem sending your message.';
+            formMessage.className = 'form-message error';
+            formMessage.style.display = 'block';
+        }
+    } catch (error) {
+        formMessage.textContent = 'Oops! Network error. Please try again later.';
+        formMessage.className = 'form-message error';
+        formMessage.style.display = 'block';
+    }
 
-      setTimeout(() => {
+    // Hide the message after 6 seconds
+    setTimeout(() => {
         formMessage.style.display = 'none';
-      }, 6000);
-    });
-
+    }, 6000);
+});
     // Initialize portfolio
     renderPortfolio();
 
